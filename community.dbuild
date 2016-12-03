@@ -66,17 +66,29 @@ vars.base.extra.commands = ${vars.default-commands}
 //// resolvers
 
 vars.ivyPat: ", [organisation]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]"
+//options.resolvers: {
+//  01: "local"
+//
+//  02: "dbuild: https://scala-ci.typesafe.com/artifactory/dbuild/"
+//  03: "dbuild-ivy: https://scala-ci.typesafe.com/artifactory/dbuild-ivy/"${vars.ivyPat}
+//  04: "dbuild-unchecked: https://scala-ci.typesafe.com/artifactory/dbuild-unchecked/" // for sbt plugins not available on ivy (they'll fail the pom check on the `dbuild` cache repo above)
+//
+//  05: "scala-pr-validation-snapshots: https://scala-ci.typesafe.com/artifactory/scala-pr-validation-snapshots"
+//
+//  // without this Scala.js can't find the Scala library sources. TODO: why? Artifactory config issue?
+//  20: "private-repo: https://scala-ci.typesafe.com/artifactory/scala-release-temp/"
+//}
+
 options.resolvers: {
-  01: "local"
-
-  02: "dbuild: https://scala-ci.typesafe.com/artifactory/dbuild/"
-  03: "dbuild-ivy: https://scala-ci.typesafe.com/artifactory/dbuild-ivy/"${vars.ivyPat}
-  04: "dbuild-unchecked: https://scala-ci.typesafe.com/artifactory/dbuild-unchecked/" // for sbt plugins not available on ivy (they'll fail the pom check on the `dbuild` cache repo above)
-
-  05: "scala-pr-validation-snapshots: https://scala-ci.typesafe.com/artifactory/scala-pr-validation-snapshots"
-
-  // without this Scala.js can't find the Scala library sources. TODO: why? Artifactory config issue?
-  20: "private-repo: https://scala-ci.typesafe.com/artifactory/scala-release-temp/"
+  01: "cache-jcenter: http://localhost:8081/artifactory/jcenter/"
+  02: "cache-central: http://localhost:8081/artifactory/central/"
+  03: "cache-maven1: http://localhost:8081/artifactory/maven1/"
+  04: "cache-maven1-unchecked: http://localhost:8081/artifactory/maven1-unchecked/"
+  05: "cache-twitter-maven: http://localhost:8081/artifactory/twitter-maven/"
+  06: "cache-mvn: http://localhost:8081/artifactory/upstream-mvn/"
+  07: "cache-ivy: http://localhost:8081/artifactory/upstream-ivy/"${vars.ivyPat}
+  08: "cache-unchecked: http://localhost:8081/artifactory/upstream-unchecked/"
+  09: "cache-nightlies: http://localhost:8081/artifactory/upstream-nightlies/"
 }
 
 //// cache
